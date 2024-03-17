@@ -4,6 +4,28 @@
     <title>Présentation de mon mémoire</title>
     <meta name="author" content="Matias Gathoye">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+        }
+        .sidebar-sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 20px;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #333;
+        }
+        .nav-link.active {
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -25,7 +47,7 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <h1 class="my-4">Présentation de mon mémoire</h1>
             <p class="text-muted"><em>Par Matias Gathoye</em></p>
-            <p class="text-muted">Dernière mise à jour : <span id="lastUpdate"></span></p>
+            <p class="text-muted"><em>Dernière mise à jour : <span id="lastUpdate"></span></em></p>
         
             <p>Voici une brève présentation de mon mémoire dans le cadre de mon master à l'ULB en sciences et technologies de l'information et de la communication.
                 Je réalise une étude qui a pour but d'analyser la bonne répartition des établissemnts scolaires en Belgique par rapport à la population. 
