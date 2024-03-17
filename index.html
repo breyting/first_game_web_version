@@ -2,12 +2,19 @@
 <html>
 <head>
     <title>Présentation de mon mémoire</title>
+    <meta name="author" content="Matias Gathoye">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
         <h1 class="my-4">Présentation de mon mémoire</h1>
-        <p>Voici une brève présentation de mon mémoire. Je fais beaucoup d'analyses spatiales dans le cadre de mon mémoire.</p>
+        <p class="text-muted"><em>Par Matias Gathoye</em></p>
+        <p class="text-muted">Dernière mise à jour : <span id="lastUpdate"></span></p>
+    
+        <p>Voici une brève présentation de mon mémoire dans le cadre de mon master à l'ULB en sciences et technologies de l'information et de la communication.
+            Je réalise une étude qui a pour but d'analyser la bonne répartition des établissemnts scolaires en Belgique par rapport à la population. 
+            Pour cela, j'utilise des données de l'enseignement de la Fédération Wallonie-Bruxelles et de la Communauté flamande, mais aussi de geo.be et de stabel.
+        </p>
         <h2 class="my-4">Cartes</h2>
         <p>Voici quelques cartes que j'ai créées pour illustrer mes analyses.</p>
         <div class="row">
@@ -26,6 +33,7 @@
             <!-- Add more cards as needed -->
         </div>
     </div>
+    <script> document.getElementById('lastUpdate').textContent = document.lastModified;</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
