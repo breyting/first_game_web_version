@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Présentation de ma thèse</title>
+    <title>Présentation de mon mémoire</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Présentation de ma thèse</h1>
-    <p>Voici une brève présentation de ma thèse. Je fais beaucoup d'analyses spatiales dans le cadre de ma thèse.</p>
-    <h2>Cartes</h2>
-    <p>Voici quelques cartes que j'ai créées pour illustrer mes analyses.</p>
-    <iframe src="map_2024/Belgique_voronoi.html" width="50%" height="450"></iframe>
-    <iframe src="map_2024/pavage_secondaire_pop_12_18_meilleur.html" width="50%" height="450"></iframe>
-    <iframe src="map_2024/Belgique_voronoi.html" width="50%" height="450"></iframe>
-    <!-- Add more iframes as needed -->
+    <div class="container">
+        <h1 class="my-4">Présentation de mon mémoire</h1>
+        <p>Voici une brève présentation de mon mémoire. Je fais beaucoup d'analyses spatiales dans le cadre de mon mémoire.</p>
+        <h2 class="my-4">Cartes</h2>
+        <p>Voici quelques cartes que j'ai créées pour illustrer mes analyses.</p>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <iframe src="map_2024/Belgique_voronoi.html" width="100%" height="450"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <iframe src="map_2024/pavage_secondaire_pop_12_18_meilleur.html" width="100%" height="450"></iframe>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
