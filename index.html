@@ -28,11 +28,15 @@
         #header {
             transition: margin-left 0.5s ease-out;
         }
+        .toggle-button {
+            position: absolute;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
     <div class="header" id="header">
-        <button id="toggleSidebar" class="btn btn-primary">Cacher table des matières</button>
+        <button id="toggleSidebar" class="btn btn-primary toggle-button">Cacher table des matières</button>
     </div>
     <div class="container">
         <div class="row">
@@ -87,13 +91,13 @@
     <script>
         document.getElementById('toggleSidebar').addEventListener('click', function() {
             var sidebar = document.querySelector('nav.sidebar');
-            var header = document.getElementById('header');
+            var button = document.querySelector('.toggle-button');
             if (sidebar.style.display === 'none' || sidebar.style.display === '') {
                 sidebar.style.display = 'block';
-                header.style.marginLeft = '0';
+                button.style.left = '200px'; // Adjust this value as needed
             } else {
                 sidebar.style.display = 'none';
-                header.style.marginLeft = '-200px'; // Adjust this value as needed
+                button.style.left = '0';
             }
         });
     </script>
