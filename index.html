@@ -25,12 +25,15 @@
         .nav-link.active {
             color: #007bff;
         }
+        #header {
+            transition: margin-left 0.5s ease-out;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <button id="toggleSidebar" class="btn btn-primary">Toggle Sidebar</button>
+            <button id="toggleSidebar" class="btn btn-primary">Cacher table des matières</button>
         </div>
         <div class="row">
             <nav class="col-md-2 bg-light sidebar">
@@ -84,10 +87,13 @@
     <script>
         document.getElementById('toggleSidebar').addEventListener('click', function() {
             var sidebar = document.querySelector('nav.sidebar');
-            if (sidebar.style.display === 'none') {
+            var header = document.getElementById('header');
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
                 sidebar.style.display = 'block';
+                header.style.marginLeft = '0';
             } else {
                 sidebar.style.display = 'none';
+                header.style.marginLeft = '-200px'; // Adjust this value as needed
             }
         });
     </script>
