@@ -1,7 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My HTML File</title>
+    <title>Présentation de mon mémoire</title>
+    <meta name="author" content="Matias Gathoye">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+        }
+        .sidebar-sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 20px;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #333;
+        }
+        .nav-link.active {
+            color: #007bff;
+        }
+        #header {
+            transition: margin-left 0.5s ease-out;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
