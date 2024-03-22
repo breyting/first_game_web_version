@@ -31,7 +31,7 @@
     <div class="container">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-            <button id="toggleSidebar" class="btn btn-primary">Toggle Sidebar</button>
+            <button id="toggleSidebar" class="btn btn-primary">Cacher la table des matières</button>
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -41,6 +41,9 @@
                             <a class="nav-link" href="#chapter2">Chapter 2</a>
                         </li>
                         <!-- Add more chapters as needed -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="annexe.html">Annexe</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -78,7 +81,7 @@
     </div>
     <script>
         document.getElementById('toggleSidebar').addEventListener('click', function() {
-            var sidebar = document.querySelector('.sidebar');
+            var sidebar = document.querySelector('nav.sidebar');
             if (sidebar.style.display === 'none') {
                 sidebar.style.display = 'block';
             } else {
