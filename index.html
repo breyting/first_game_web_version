@@ -1,108 +1,248 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Présentation de mon mémoire</title>
-    <meta name="author" content="Matias Gathoye">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        .sidebar {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            padding: 20px 0;
-            background-color: #f8f9fa;
-        }
-        .sidebar-sticky {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 20px;
-        }
-        .nav-link {
-            font-weight: 500;
-            color: #333;
-        }
-        .nav-link.active {
-            color: #007bff;
-        }
-        #header {
-            transition: margin-left 0.5s ease-out;
-        }
-        .toggle-button {
-            position: absolute;
-            z-index: 1;
-        }
-    </style>
-</head>
-<body>
-    <div class="header" id="header">
-        <button id="toggleSidebar" class="btn btn-primary toggle-button">Cacher table des matières</button>
-    </div>
-    <div class="container">
-        <div class="row">
-            <nav class="col-md-2 bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#chapter1">Chapter 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#chapter2">Chapter 2</a>
-                        </li>
-                        <!-- Add more chapters as needed -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="annexe.html">Annexe</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <h1 class="my-4">Présentation de mon mémoire</h1>
-            <p class="text-muted"><em>Par Matias Gathoye</em></p>
-            <p class="text-muted"><em>Dernière mise à jour : <span id="lastUpdate"></span></em></p>
-        
-            <p>Voici une brève présentation de mon mémoire dans le cadre de mon master à l'ULB en sciences et technologies de l'information et de la communication.
-                Je réalise une étude qui a pour but d'analyser la bonne répartition des établissemnts scolaires en Belgique par rapport à la population. 
-                Pour cela, j'utilise des données de l'enseignement de la Fédération Wallonie-Bruxelles et de la Communauté flamande, mais aussi de geo.be et de stabel.
-            </p>
-            <h2 class="my-4">Cartes</h2>
-            <p>Voici quelques cartes que j'ai créées pour illustrer mes analyses.</p>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="card-body">
-                        <h5 id="chapter1">Méthode de Voronoï appliquée aux écoles secondaires</h5>
-                        <iframe src="map_2024/Belgique_voronoi.html" width="100%" height="450"></iframe>
-                        <a href="map_2024/Belgique_voronoi.html" target="_blank">Ouvrir dans un nouvel onglet</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card-body">
-                        <h5 id="chapter2">Méthode de Voronoï contenant la population de 12 à 18 ans par tuile</h5>
-                        <iframe src="map_2024/pavage_secondaire_pop_12_18_meilleur.html" width="100%" height="450"></iframe>
-                        <a href="map_2024/pavage_secondaire_pop_12_18_meilleur.html" target="_blank">Ouvrir dans un nouvel onglet</a>
-                    </div>
-                </div>
-                <!-- Add more cards as needed -->
-            </div>
-            </main>
-        </div>
-    </div>
-    <script>
-        document.getElementById('toggleSidebar').addEventListener('click', function() {
-            var sidebar = document.querySelector('nav.sidebar');
-            var button = document.querySelector('.toggle-button');
-            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
-                sidebar.style.display = 'block';
-                button.style.left = '200px'; // Adjust this value as needed
-            } else {
-                sidebar.style.display = 'none';
-                button.style.left = '0';
-            }
-        });
-    </script>
-    <script> document.getElementById('lastUpdate').textContent = document.lastModified;</script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>First Game</title>
+		<style>
+body {
+	touch-action: none;
+	margin: 0;
+	border: 0 none;
+	padding: 0;
+	text-align: center;
+	background-color: black;
+}
+
+#canvas {
+	display: block;
+	margin: 0;
+	color: white;
+}
+
+#canvas:focus {
+	outline: none;
+}
+
+.godot {
+	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+	color: #e0e0e0;
+	background-color: #3b3943;
+	background-image: linear-gradient(to bottom, #403e48, #35333c);
+	border: 1px solid #45434e;
+	box-shadow: 0 0 1px 1px #2f2d35;
+}
+
+/* Status display */
+
+#status {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* don't consume click events - make children visible explicitly */
+	visibility: hidden;
+}
+
+#status-progress {
+	width: 366px;
+	height: 7px;
+	background-color: #38363A;
+	border: 1px solid #444246;
+	padding: 1px;
+	box-shadow: 0 0 2px 1px #1B1C22;
+	border-radius: 2px;
+	visibility: visible;
+}
+
+@media only screen and (orientation:portrait) {
+	#status-progress {
+		width: 61.8%;
+	}
+}
+
+#status-progress-inner {
+	height: 100%;
+	width: 0;
+	box-sizing: border-box;
+	transition: width 0.5s linear;
+	background-color: #202020;
+	border: 1px solid #222223;
+	box-shadow: 0 0 1px 1px #27282E;
+	border-radius: 3px;
+}
+
+#status-indeterminate {
+	height: 42px;
+	visibility: visible;
+	position: relative;
+}
+
+#status-indeterminate > div {
+	width: 4.5px;
+	height: 0;
+	border-style: solid;
+	border-width: 9px 3px 0 3px;
+	border-color: #2b2b2b transparent transparent transparent;
+	transform-origin: center 21px;
+	position: absolute;
+}
+
+#status-indeterminate > div:nth-child(1) { transform: rotate( 22.5deg); }
+#status-indeterminate > div:nth-child(2) { transform: rotate( 67.5deg); }
+#status-indeterminate > div:nth-child(3) { transform: rotate(112.5deg); }
+#status-indeterminate > div:nth-child(4) { transform: rotate(157.5deg); }
+#status-indeterminate > div:nth-child(5) { transform: rotate(202.5deg); }
+#status-indeterminate > div:nth-child(6) { transform: rotate(247.5deg); }
+#status-indeterminate > div:nth-child(7) { transform: rotate(292.5deg); }
+#status-indeterminate > div:nth-child(8) { transform: rotate(337.5deg); }
+
+#status-notice {
+	margin: 0 100px;
+	line-height: 1.3;
+	visibility: visible;
+	padding: 4px 6px;
+	visibility: visible;
+}
+		</style>
+		<link id='-gd-engine-icon' rel='icon' type='image/png' href='First Game Web.icon.png' />
+<link rel='apple-touch-icon' href='First Game Web.apple-touch-icon.png'/>
+
+	</head>
+	<body>
+		<canvas id="canvas">
+			HTML5 canvas appears to be unsupported in the current browser.<br >
+			Please try updating or use a different browser.
+		</canvas>
+		<div id="status">
+			<div id="status-progress" style="display: none;" oncontextmenu="event.preventDefault();">
+				<div id ="status-progress-inner"></div>
+			</div>
+			<div id="status-indeterminate" style="display: none;" oncontextmenu="event.preventDefault();">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div id="status-notice" class="godot" style="display: none;"></div>
+		</div>
+
+		<script src="First Game Web.js"></script>
+		<script>
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"First Game Web","experimentalVK":false,"fileSizes":{"First Game Web.pck":1827232,"First Game Web.wasm":49282035},"focusCanvas":true,"gdextensionLibs":[]};
+const engine = new Engine(GODOT_CONFIG);
+
+(function () {
+	const INDETERMINATE_STATUS_STEP_MS = 100;
+	const statusProgress = document.getElementById('status-progress');
+	const statusProgressInner = document.getElementById('status-progress-inner');
+	const statusIndeterminate = document.getElementById('status-indeterminate');
+	const statusNotice = document.getElementById('status-notice');
+
+	let initializing = true;
+	let statusMode = 'hidden';
+
+	let animationCallbacks = [];
+	function animate(time) {
+		animationCallbacks.forEach((callback) => callback(time));
+		requestAnimationFrame(animate);
+	}
+	requestAnimationFrame(animate);
+
+	function animateStatusIndeterminate(ms) {
+		const i = Math.floor((ms / INDETERMINATE_STATUS_STEP_MS) % 8);
+		if (statusIndeterminate.children[i].style.borderTopColor === '') {
+			Array.prototype.slice.call(statusIndeterminate.children).forEach((child) => {
+				child.style.borderTopColor = '';
+			});
+			statusIndeterminate.children[i].style.borderTopColor = '#dfdfdf';
+		}
+	}
+
+	function setStatusMode(mode) {
+		if (statusMode === mode || !initializing) {
+			return;
+		}
+		[statusProgress, statusIndeterminate, statusNotice].forEach((elem) => {
+			elem.style.display = 'none';
+		});
+		animationCallbacks = animationCallbacks.filter(function (value) {
+			return (value !== animateStatusIndeterminate);
+		});
+		switch (mode) {
+		case 'progress':
+			statusProgress.style.display = 'block';
+			break;
+		case 'indeterminate':
+			statusIndeterminate.style.display = 'block';
+			animationCallbacks.push(animateStatusIndeterminate);
+			break;
+		case 'notice':
+			statusNotice.style.display = 'block';
+			break;
+		case 'hidden':
+			break;
+		default:
+			throw new Error('Invalid status mode');
+		}
+		statusMode = mode;
+	}
+
+	function setStatusNotice(text) {
+		while (statusNotice.lastChild) {
+			statusNotice.removeChild(statusNotice.lastChild);
+		}
+		const lines = text.split('\n');
+		lines.forEach((line) => {
+			statusNotice.appendChild(document.createTextNode(line));
+			statusNotice.appendChild(document.createElement('br'));
+		});
+	}
+
+	function displayFailureNotice(err) {
+		const msg = err.message || err;
+		console.error(msg);
+		setStatusNotice(msg);
+		setStatusMode('notice');
+		initializing = false;
+	}
+
+	const missing = Engine.getMissingFeatures();
+	if (missing.length !== 0) {
+		const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
+		displayFailureNotice(missingMsg + missing.join('\n'));
+	} else {
+		setStatusMode('indeterminate');
+		engine.startGame({
+			'onProgress': function (current, total) {
+				if (total > 0) {
+					statusProgressInner.style.width = `${(current / total) * 100}%`;
+					setStatusMode('progress');
+					if (current === total) {
+						// wait for progress bar animation
+						setTimeout(() => {
+							setStatusMode('indeterminate');
+						}, 500);
+					}
+				} else {
+					setStatusMode('indeterminate');
+				}
+			},
+		}).then(() => {
+			setStatusMode('hidden');
+			initializing = false;
+		}, displayFailureNotice);
+	}
+}());
+		</script>
+	</body>
 </html>
+
